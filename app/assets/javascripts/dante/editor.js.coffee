@@ -36,7 +36,7 @@ class Dante.Editor extends Dante.View
     @store_url       = opts.store_url
     @store_method    = opts.store_method || "POST"
     @store_parameter_name = opts.store_parameter_name || 'body'
-    @store_additional_parameters = opts.store_additional_parameters
+    @store_additional_parameters = opts.store_additional_parameters || null
     @spell_check     = opts.spellcheck || false
     @disable_title   = opts.disable_title || false
     @store_interval  = opts.store_interval || 15000
@@ -112,7 +112,8 @@ class Dante.Editor extends Dante.View
         url: @store_url
         method: @store_method
         data:
-          "#{@store_parameter_name}": @getContent()
+          "#{@store_parameter_name}": @getContent(),
+          "#{@store_additional_parameters}"
         success: (res)->
           utils.log "store!"
           utils.log res
