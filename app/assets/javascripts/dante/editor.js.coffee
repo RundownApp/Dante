@@ -27,7 +27,7 @@ class Dante.Editor extends Dante.View
     @initial_html    = $(@el).html()
     @current_range   = null
     @current_node    = null
-    @el = opts.el || "#editor"
+    @el              = opts.el || "#editor"
     @upload_url      = opts.upload_url  || "/uploads.json"
     @upload_callback = opts.upload_callback
     @oembed_url      = opts.oembed_url  || "http://api.embed.ly/1/oembed?url="
@@ -35,6 +35,8 @@ class Dante.Editor extends Dante.View
     @default_loading_placeholder = opts.default_loading_placeholder || Dante.defaults.image_placeholder
     @store_url       = opts.store_url
     @store_method    = opts.store_method || "POST"
+    @store_parameter_name = opts.story_parameter_name || 'body'
+    @store_additional_parameters = opts.store_additional_parameters
     @spell_check     = opts.spellcheck || false
     @disable_title   = opts.disable_title || false
     @store_interval  = opts.store_interval || 15000
@@ -110,7 +112,7 @@ class Dante.Editor extends Dante.View
         url: @store_url
         method: @store_method
         data:
-          body: @getContent()
+          @store_parameter_name: @getContent()
         success: (res)->
           utils.log "store!"
           utils.log res
