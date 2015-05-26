@@ -35,7 +35,7 @@ class Dante.Editor extends Dante.View
     @default_loading_placeholder = opts.default_loading_placeholder || Dante.defaults.image_placeholder
     @store_url       = opts.store_url
     @store_method    = opts.store_method || "POST"
-    @store_parameter_name = opts.story_parameter_name || 'body'
+    @store_parameter_name = opts.store_parameter_name || 'body'
     @store_additional_parameters = opts.store_additional_parameters
     @spell_check     = opts.spellcheck || false
     @disable_title   = opts.disable_title || false
