@@ -105,19 +105,16 @@ class Dante.Editor extends Dante.View
     else
       utils.log "content changed! update"
       @content = @getContent()
-      if @store_alternate_method
-        @store_alternate_method()
-      else
-        $.ajax
-          url: @store_url
-          method: @store_method
-          data:
-            body: @getContent()
-          success: (res)->
-            utils.log "store!"
-            utils.log res
-          complete: (jxhr) =>
-            @store()
+      $.ajax
+        url: @store_url
+        method: @store_method
+        data:
+          body: @getContent()
+        success: (res)->
+          utils.log "store!"
+          utils.log res
+        complete: (jxhr) =>
+          @store()
 
   getContent: ()->
     $(@el).find(".section-inner").html()
