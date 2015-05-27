@@ -111,9 +111,7 @@ class Dante.Editor extends Dante.View
       $.ajax
         url: @store_url
         method: @store_method
-        data:
-          "#{@store_parameter_name}": @getContent()
-          @store_additional_parameters
+        data: { "#{@store_parameter_name}": @getContent(), @store_additional_parameters }
         success: (res)->
           utils.log "store!"
           utils.log res
