@@ -71,6 +71,7 @@ Until now I´ve been able to implement the following features:
 + **store_url:**   default: to none , url to store data with interval
 + **store_method** default: to POST , http verb to use when store_url is present.
 + **store_interval:** default: 15000 (15 secs), used when store_url is present.
++ **store_alternate_method:** default:none, specify javascript method to call when attempting to store changed content
 + **spellcheck:**  default: false
 + **default_loading_placeholder:** image placeholder to show when uploaded/pasted images are loading , defaults to a grey background
 + **disable_title** default: false, will hide the initial heading placeholder for initial text

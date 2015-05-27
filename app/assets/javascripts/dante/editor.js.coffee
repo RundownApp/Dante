@@ -35,8 +35,7 @@ class Dante.Editor extends Dante.View
     @default_loading_placeholder = opts.default_loading_placeholder || Dante.defaults.image_placeholder
     @store_url       = opts.store_url
     @store_method    = opts.store_method || "POST"
-    @store_parameter_name = opts.store_parameter_name || 'body'
-    @store_additional_parameters = opts.store_additional_parameters || null
+    @store_alternate_method = opts.store_alternate_method
     @spell_check     = opts.spellcheck || false
     @disable_title   = opts.disable_title || false
     @store_interval  = opts.store_interval || 15000
@@ -106,15 +105,19 @@ class Dante.Editor extends Dante.View
     else
       utils.log "content changed! update"
       @content = @getContent()
-      $.ajax
-        url: @store_url
-        method: @store_method
-        data: { "#{@store_parameter_name}": @getContent(), "#{@store_additional_parameters}" }
-        success: (res)->
-          utils.log "store!"
-          utils.log res
-        complete: (jxhr) =>
-          @store()
+      if @store_alternate_method
+        @store_alternate_method()
+      else
+        $.ajax
+          url: @store_url
+          method: @store_method
+          data:
+            body: @getContent()
+          success: (res)->
+            utils.log "store!"
+            utils.log res
+          complete: (jxhr) =>
+            @store()
 
   getContent: ()->
     $(@el).find(".section-inner").html()
