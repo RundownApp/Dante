@@ -113,7 +113,7 @@ class Dante.Editor extends Dante.View
         method: @store_method
         data:
           "#{@store_parameter_name}": @getContent()
-          , "#{@store_additional_parameters}"
+          "#{@store_additional_parameters}"
         success: (res)->
           utils.log "store!"
           utils.log res
