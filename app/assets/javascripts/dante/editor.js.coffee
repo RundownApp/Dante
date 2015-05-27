@@ -105,7 +105,7 @@ class Dante.Editor extends Dante.View
     else
       utils.log "content changed! update"
       @content = @getContent()
-      if @store_alternate_method != undefined
+      if @store_alternate_method
         @store_alternate_method()
       else
         $.ajax
