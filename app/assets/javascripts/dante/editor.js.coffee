@@ -1014,7 +1014,7 @@ class Dante.Editor extends Dante.View
       @element = element
 
     s = new Sanitize
-      elements: ['strong','img', 'em', 'br', 'a', 'blockquote', 'b', 'u', 'i', 'pre', 'p', 'h1', 'h2', 'h3', 'h4', 'ul', 'ol', 'li']
+      elements: ['strong','img', 'em', 'br', 'a', 'blockquote', 'b', 'u', 'i', 'pre', 'p', 'h1', 'h2', 'h3', 'h4', 'ul', 'ol', 'li', 'span']
 
       attributes:
         '__ALL__': ['class']
@@ -1025,7 +1025,7 @@ class Dante.Editor extends Dante.View
         a: { href: ['http', 'https', 'mailto'] }
 
       transformers: [(input)->
-                      if (input.node_name == "span" && ($(input.node).hasClass("defaultValue") || $(input.node).hasClass("del") $(input.node).hasClass("add")) )
+                      if (input.node_name == "span" && $(input.node).hasClass("defaultValue") )
                         return whitelist_nodes: [input.node]
                       else
                         return null
