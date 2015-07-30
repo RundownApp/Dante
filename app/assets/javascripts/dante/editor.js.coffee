@@ -1025,7 +1025,7 @@ class Dante.Editor extends Dante.View
         a: { href: ['http', 'https', 'mailto'] }
 
       transformers: [(input)->
-                      if (input.node_name == "span" && $(input.node).hasClass("defaultValue") )
+                      if (input.node_name == "span" && ($(input.node).hasClass("defaultValue") || $(input.node).hasClass("del") $(input.node).hasClass("add")) )
                         return whitelist_nodes: [input.node]
                       else
                         return null
