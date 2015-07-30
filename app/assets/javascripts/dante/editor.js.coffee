@@ -1020,6 +1020,7 @@ class Dante.Editor extends Dante.View
         '__ALL__': ['class']
         a: ['href', 'title', 'target']
         img: ['src']
+        span: ['data-cid', 'data-userid', 'data-username', 'data-time', 'title']
 
       protocols:
         a: { href: ['http', 'https', 'mailto'] }
